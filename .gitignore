@@ -1,0 +1,7 @@
+# Project files
+go.sum
+
+# Misc
+src/ui/api/app/.env
+env-file
+set-env.sh
