@@ -4,6 +4,7 @@ import (
 	"backend_template/src/core"
 	_ "backend_template/src/ui/api/docs"
 	"backend_template/src/ui/api/middlewares"
+
 	"backend_template/src/ui/api/router"
 	"fmt"
 
@@ -69,7 +70,6 @@ func (a *api) setupMiddlewares() {
 	}))
 	a.server.Use(middleware.Recover())
 	a.server.Use(middlewares.CORSMiddleware())
-	a.server.Use(middlewares.GuardMiddleware)
 }
 
 func (a *api) rootGroup() *echo.Group {
