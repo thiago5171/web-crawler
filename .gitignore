@@ -5,3 +5,4 @@ go.sum
 src/ui/api/app/.env
 env-file
 set-env.sh
+.idea
