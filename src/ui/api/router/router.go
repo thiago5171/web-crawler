@@ -1,8 +1,6 @@
 package router
 
 import (
-	"os"
-
 	"github.com/labstack/echo/v4"
 	echoSwagger "github.com/swaggo/echo-swagger"
 )
@@ -19,9 +17,9 @@ func New() Router {
 }
 
 func (r *router) Load(group *echo.Group) {
-	if os.Getenv("SERVER_MODE") == "dev" || os.Getenv("SERVER_MODE") == "stage" {
-		group.GET("/docs/*", echoSwagger.WrapHandler)
-	}
+
+	group.GET("/docs/*", echoSwagger.WrapHandler)
+
 	NewCrawlerRouter().Load(group)
 
 }

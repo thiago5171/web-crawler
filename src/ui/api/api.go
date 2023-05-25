@@ -25,15 +25,12 @@ type api struct {
 	server *echo.Echo
 }
 
-// @title DIT Backend API
+// @title Web Crawler Backend API
 // @version 1.0
-// @description DIT Backend template for new backend projects
-// @contact.name DIT - IFAL
-// @contact.email wmrn1@aluno.ifal.edu.br
+// @contact.name Thiago gazaroli
+// @contact.email tgazaroli@gmail.com
 // @BasePath /api
-// @securityDefinitions.apikey BearerAuth
 // @in header
-// @name Authorization
 func NewAPI(host string, port int) API {
 	server := echo.New()
 	return &api{host, port, server}

@@ -1,16 +1,12 @@
 package crawler
 
 import (
-	"backend_template/src/core/domain"
-	"backend_template/src/core/domain/errors"
 	"time"
 
 	"github.com/google/uuid"
 )
 
 type VisitedLinks interface {
-	domain.Model
-
 	ID() *uuid.UUID
 	Url() string
 	Website() string
@@ -64,9 +60,4 @@ func (acc *visitedLinks) SetWebSite(webSite string) {
 
 func (acc *visitedLinks) SetCheckedDate(date time.Time) {
 	acc.checkedDate = date
-}
-
-func (acc *visitedLinks) IsValid() errors.Error {
-	//TODO implement me
-	panic("implement me")
 }

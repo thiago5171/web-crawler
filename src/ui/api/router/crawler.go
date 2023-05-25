@@ -17,6 +17,6 @@ func NewCrawlerRouter() Router {
 }
 
 func (c *crawlerRouter) Load(group *echo.Group) {
-	group.GET("/search-link", c.handler.SearchLinks)
+	group.POST("/search-link", c.handler.SearchLinks)
 
 }

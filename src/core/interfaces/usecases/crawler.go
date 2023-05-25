@@ -1,5 +1,7 @@
 package usecases
 
+import "backend_template/src/core/domain/crawler"
+
 type CrawlerUseCase interface {
-	NavigateLinks(url string)
+	CreateLink(visitedLink crawler.VisitedLinks) bool
 }
