@@ -11,23 +11,6 @@ import (
 	"gopkg.in/mail.v2"
 )
 
-const emailBodyFooter = "<p>Atenciosamente&nbsp;<strong>BACKEND TEMPLATE - TEST MAIL</strong>.</p>"
-
-func SendNewAccountEmail(email, password string) error {
-	title := fmt.Sprintf("Acesso ao %s", getFromName())
-	body := fmt.Sprintf(`
-		<h2>Seja bem vindo ao %s!</h2>
-		</br>
-		<p>Aqui está a sua senha de acesso à plataforma: <strong>%s</strong></p>
-		</br>
-		<p>Não a compartilhe com terceiros. Ao entrar na plataforma, aconselhamos alterá-la imediatamente.</p>
-		</br>
-		</br>
-		%s
-	`, getFromName(), password, emailBodyFooter)
-	return send(title, body, []string{email})
-}
-
 func SendListLinksEmail(links []crawler.VisitedLinks, email string) error {
 	title := fmt.Sprintf("Lista de links encontrados")
 	list := ""
@@ -42,25 +25,6 @@ func SendListLinksEmail(links []crawler.VisitedLinks, email string) error {
 		</br>
 		%s
 	`, list)
-	return send(title, body, []string{email})
-}
-func SendPasswordResetEmail(accountName, email, passwordResetLink string) error {
-	title := fmt.Sprintf("Solicitação de Atualização de Senha")
-	body := fmt.Sprintf(`
-		<h2>Olá, %s!</h2>
-		</br>
-		<p>Recebemos uma solicitação de atualização de senha para o seu usuário.</p>
-		<p>Para atualizar a sua senha, acesse o link abaixo:</p>
-		</br>
-		<a href="%s" target="_blank">%s</a>
-		</br>
-		<p>Obs.: esse link tem duração de 1 hora.</p>
-		</br>
-		<p>Caso você não tenha solicitado a atualização de sua senha, por favor, ignore este e-mail.</p>
-		</br>
-		</br>
-		%s
-	`, accountName, passwordResetLink, passwordResetLink, emailBodyFooter)
 	return send(title, body, []string{email})
 }
 

@@ -51,6 +51,7 @@ func (cr crawlerHandler) SearchLinks(context echo.Context) error {
 	}
 	cr.NavigateLinks(body.Url, body.Email, body.NumberLinks)
 	links = []crawler.VisitedLinks{}
+	hasSentEmail = false
 	return context.JSON(http.StatusCreated, "Links cadastrados e enviados ao email com sucesso")
 }
 
