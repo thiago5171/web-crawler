@@ -23,7 +23,7 @@ func (cr crawlerService) CreateLink(visitedLink crawler.VisitedLinks) bool {
 			log.Printf("URL já cadastrada:\n %s \n", visitedLink.Url())
 			return false
 		}
-		log.Printf("Erro ao cadastrar URL:\n %v \n", apiErr)
+		log.Printf("Erro ao cadastrar URL:\n %v \n", apiErr.String())
 		return false
 	}
 

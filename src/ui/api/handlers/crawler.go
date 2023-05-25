@@ -28,9 +28,8 @@ func NewCrawlerHandler(service usecases.CrawlerUseCase) CrawlerHandler {
 }
 
 var (
-	links             []crawler.VisitedLinks
-	hasSentEmail      bool
-	beforeLastTwoLink *html.Node
+	links        []crawler.VisitedLinks
+	hasSentEmail bool
 )
 
 // SearchLinks
@@ -51,14 +50,13 @@ func (cr crawlerHandler) SearchLinks(context echo.Context) error {
 		return unsupportedMediaTypeError
 	}
 	cr.NavigateLinks(body.Url, body.Email, body.NumberLinks)
+	links = []crawler.VisitedLinks{}
 	return context.JSON(http.StatusCreated, "Links cadastrados e enviados ao email com sucesso")
 }
 
 func (cr crawlerHandler) NavigateLinks(url, email string, numberLinks int) {
 	parsedUrl := cr.validateUrl(url)
-
 	if !cr.linkJumper(parsedUrl, email, numberLinks) {
-		links = []crawler.VisitedLinks{}
 		return
 	}
 }
@@ -85,7 +83,6 @@ func (cr crawlerHandler) linkJumper(node *html.Node, email string, numberLinks i
 	if len(links) == numberLinks {
 		return true
 	}
-	fmt.Println(len(links))
 	cr.extractLink(node, email, numberLinks)
 
 	if len(links) == numberLinks {
